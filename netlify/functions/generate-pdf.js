@@ -3,9 +3,10 @@ import {executablePath} from '@sparticuz/chromium'
 import {join} from 'node:path'
 import {launch} from 'puppeteer-core'
 export async function handler(event) {
+  let puppeteerProcess
   try {
     const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
-    const puppeteerProcess = await launch({
+    puppeteerProcess = await launch({
       args: [
         '--disable-dev-shm-usage',
         '--disable-gpu',
@@ -46,5 +47,7 @@ export async function handler(event) {
       },
       statusCode: 500
     }
+  } finally {
+    await puppeteerProcess.close()
   }
 }
