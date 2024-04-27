@@ -40,7 +40,8 @@ export async function handler(event) {
     console.error(error)
     return {
       body: JSON.stringify({
-        error: 'Internal Server Error'
+        error: 'Internal Server Error',
+        req_id: event.headers['x-nf-request-id']
       }),
       headers: {
         'content-type': 'application/json'
