@@ -3,7 +3,7 @@ import {executablePath} from '@sparticuz/chromium'
 import {join} from 'node:path'
 import {launch} from 'puppeteer-core'
 export async function handler(event) {
-  const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/chromium.br')}`)
+  const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
   const puppeteerProcess = await launch({
     args: [
       '--disable-dev-shm-usage',
