@@ -48,6 +48,8 @@ export async function handler(event) {
       statusCode: 500
     }
   } finally {
-    await puppeteerProcess.close()
+    if (puppeteerProcess) {
+      await puppeteerProcess.close()
+    }
   }
 }
