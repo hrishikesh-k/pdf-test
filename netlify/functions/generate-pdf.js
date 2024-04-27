@@ -1,11 +1,12 @@
+import chromium from '@sparticuz/chromium'
 import {cwd} from 'node:process'
-import {executablePath} from '@sparticuz/chromium'
 import {join} from 'node:path'
 import {launch} from 'puppeteer-core'
 export async function handler(event) {
+  chromium.setGraphicsMode = false
   let puppeteerProcess
   try {
-    const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
+    const chromePath = await chromium.executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
     puppeteerProcess = await launch({
       args: [
         '--disable-dev-shm-usage',
