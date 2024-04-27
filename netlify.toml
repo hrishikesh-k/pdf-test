@@ -2,6 +2,6 @@
   command = "npm -v"
 [functions]
   included_files = [
-    "./node_modules/@sparticuz/chromium/bin/chromium.br"
+    "./node_modules/@sparticuz/chromium/bin/**/*"
   ]
   node_bundler = "esbuild"
