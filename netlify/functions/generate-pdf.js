@@ -3,20 +3,20 @@ import {executablePath} from '@sparticuz/chromium'
 import {join} from 'node:path'
 import {launch} from 'puppeteer-core'
 export async function handler(event) {
-  const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
-  const puppeteerProcess = await launch({
-    args: [
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--disable-setuid-sandbox',
-      '--no-sandbox',
-      '--no-zygote',
-      '--single-process'
-    ],
-    executablePath: chromePath,
-    headless: false
-  })
   try {
+    const chromePath = await executablePath(`${join(cwd(), './node_modules/@sparticuz/chromium/bin/')}`)
+    const puppeteerProcess = await launch({
+      args: [
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-setuid-sandbox',
+        '--no-sandbox',
+        '--no-zygote',
+        '--single-process'
+      ],
+      executablePath: chromePath,
+      headless: false
+    })
     const page = await puppeteerProcess.newPage()
     await page.goto('https://www.google.com/', {
       waitUntil: 'networkidle0'
