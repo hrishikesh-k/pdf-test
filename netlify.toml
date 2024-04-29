@@ -1,7 +1,5 @@
 [build]
   command = "npm -v"
 [functions]
-  included_files = [
-    "./node_modules/@sparticuz/chromium/bin/**/*"
-  ]
+  external_node_modules = ["@sparticuz/chromium"]
   node_bundler = "esbuild"
